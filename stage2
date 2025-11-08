@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Operation Signal — Stage 2</title>
+  <link rel="stylesheet" href="static/styles.css">
+  <!-- Hint: the string in the signal box is Base64 -->
+</head>
+<body>
+  <div class="wrap">
+    <h1>Operation: Signal</h1>
+
+    <div class="stage">
+      <h2>Stage 2 — Enemy Signal</h2>
+      <p><strong>Server:</strong> Access granted. Incoming encrypted audio signal:</p>
+
+      <!-- Base64 payload (decodes to: ENEMY MESSAGE: flag{signal_1011}) -->
+      <pre id="signalBox">  <audio controls>
+    <source src="audio.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio></pre>
+
+      
+
+      <p>Submit the next flag below:</p>
+      <input id="inputFlag2" placeholder="flag{...}">
+      <button id="submitBtn2">Submit Stage 2 Flag</button>
+      <p id="stage2msg" class="msg"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('submitBtn2').addEventListener('click', function() {
+      const v = document.getElementById('inputFlag2').value.trim();
+      // correct second-stage flag (decoded from the Base64 above)
+      const correct2 = "flag{19_NOV_4_F35_NORTH_WING_1:38_AM}";
+      if (v === correct2) {
+        // proceed to stage 3
+        window.location.href = "final.html";
+      } else {
+        document.getElementById('stage2msg').textContent = "❌ Wrong flag.";
+      }
+    });
+  </script>
+</body>
+</html>
